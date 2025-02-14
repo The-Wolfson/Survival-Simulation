@@ -1,0 +1,6 @@
+version: "Apple Swift version 6.0.3 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)"
+options: "2f462317e47843c5a5297f137b23745f8a177790cc5fefc169ffed516cec1b3a"
+build_start_time: [1739509656, 909779000]
+build_end_time: [1739509659, 622817000]
+inputs:
+  "/Users/joshuawolfson/Documents/Coding/RPS-Sim/RPS-Sim/main.swift": [1739509148, 475586575]
