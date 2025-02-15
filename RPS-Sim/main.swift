@@ -8,75 +8,123 @@
 import Foundation
 
 let start = CFAbsoluteTimeGetCurrent()
-//1: Rock, 2: Paper, 3: Scissors
-let rockSymbol = "🟩"  //"🪨" //
-let paperSymbol = "🟧"  //"📄"//
-let scissorsSymbol = "🟦"  //"✂️ "
+
+guard CommandLine.arguments.count != 4 else {
+    print(
+        "Insufficient arguments. Usage: <gridSize> <numberOfPieces> <noOfFrames> <noOfTeams>"
+    )
+    exit(1)
+}
 
 let gridSize: Int = Int(CommandLine.arguments[1]) ?? 40
-var grid: [[Int]] = Array(
-    repeating: Array(repeating: 0, count: gridSize), count: gridSize)
+let numberOfPieces: Int = Int(CommandLine.arguments[2]) ?? 100
+let noOfFrames: Int = Int(CommandLine.arguments[3]) ?? 100
+let noOfTeams: Int = min(Int(CommandLine.arguments[4]) ?? 3, 9)
+var grid: [[[Int]]] = Array(
+    repeating: Array(repeating: [0, 0], count: gridSize), count: gridSize)
+
+func symbol(for num: Int) -> String {
+    switch num {
+    case 1:
+        return "🟥"
+    case 2:
+        return "🟧"
+    case 3:
+        return "🟨"
+    case 4:
+        return "🟩"
+    case 5:
+        return "🟦"
+    case 6:
+        return "🟪"
+    case 7:
+        return "🟫"
+    case 8:
+        return "⬜️"
+    case 9:
+        return "🔳"
+    default:
+        return "  "
+    }
+}
 
 func generatePositions(for number: Int, count: Int) {
     for _ in 0..<count {
-        let randCol = Int.random(in: 0..<gridSize)
-        let randRow = Int.random(in: 0..<gridSize)
+        var added = false
+        while !added {
+            let randCol = Int.random(in: 0..<gridSize)
+            let randRow = Int.random(in: 0..<gridSize)
 
-        if grid[randRow][randCol] == 0 {
-            grid[randRow][randCol] = number
-        } else {
-            grid[randCol][randRow] = number
+            if grid[randRow][randCol][0] == 0 {
+                grid[randRow][randCol][0] = number
+                added = true
+            }
         }
     }
 }
 
-func decideWinner(num1: Int, num2: Int) -> Int {
+func decideWinner(num1: Int, num2: Int, totalMoves: Int = noOfTeams) -> Int {
     if num1 == num2 {
         return num1
     }
-    if num1 + num2 == 3 {  //Rock vs Paper
-        return 2  //Paper
+
+    let half = totalMoves / 2
+    let diff = ((num1 - 1) - (num2 - 1) + totalMoves) % totalMoves
+
+    if diff >= 1 && diff <= half {
+        return num1
+    } else {
+        return num2
     }
-    if num1 + num2 == 4 {  //Rock vs Scissors
-        return 1  //Rock
-    }
-    if num1 + num2 == 5 {  //Paper vs Scissors
-        return 3  //Scissors
-    }
-    return 0
 }
 
 func updatePositions() {
     for (rowIndex, row) in grid.enumerated() {
         for (colIndex, item) in row.enumerated() {
-            if item != 0 {
-                //direction - 0: up, 1: right, 2: down, 3: left
-                let direction = Int.random(in: 0..<4)
+            let number = item[0]
+            let oldDirection = item[1]
+            if number != 0 {
+                var moved = false
+                while !moved {
+                    //direction - 1: up, 2: right, 3: down, 4: left
+                    let direction = Int.random(in: 1..<5)
 
-                var newRow = rowIndex
-                var newCol = colIndex
+                    var newRow = rowIndex
+                    var newCol = colIndex
 
-                switch direction {
-                case 0: newRow = rowIndex - 1
-                case 1: newCol = colIndex + 1
-                case 2: newRow = rowIndex + 1
-                case 3: newCol = colIndex - 1
-                default: break
-                }
+                    switch direction {
+                    case 1: newRow = rowIndex - 1
+                    case 2: newCol = colIndex + 1
+                    case 3: newRow = rowIndex + 1
+                    case 4: newCol = colIndex - 1
+                    default: break
+                    }
 
-                if newRow >= 0 && newRow < gridSize && newCol >= 0
-                    && newCol < gridSize
-                {
+                    if newRow >= 0 && newRow < gridSize && newCol >= 0
+                        && newCol < gridSize && oldDirection != direction
+                    {
 
-                    if grid[newRow][newCol] == 0 {
-                        grid[newRow][newCol] = item
-                        grid[rowIndex][colIndex] = 0
-                    } else {
-                        let winner = decideWinner(
-                            num1: grid[rowIndex][colIndex],
-                            num2: grid[newRow][newCol])
-                        grid[newRow][newCol] = winner
-                        grid[rowIndex][colIndex] = winner
+                        if grid[newRow][newCol][0] == 0 {
+                            grid[newRow][newCol] = [
+                                number,
+                                direction > 2 ? direction - 2 : direction + 2,
+                            ]
+                            grid[rowIndex][colIndex] = [0, 0]
+                            moved = true
+                        } else {
+                            let winner = decideWinner(
+                                num1: grid[rowIndex][colIndex][0],
+                                num2: grid[newRow][newCol][0])
+                            grid[newRow][newCol] = [
+                                winner,
+                                direction > 2 ? direction - 2 : direction + 2,
+                            ]
+                            grid[rowIndex][colIndex] = [
+                                winner,
+                                direction > 2 ? direction - 2 : direction + 2,
+                            ]
+                            moved = true
+                        }
                     }
                 }
             }
@@ -90,53 +138,45 @@ func printGrid() {
 
     for row in grid {
         for item in row {
-            switch item {
-            case 1:
-                output += " \(rockSymbol) "
-            case 2:
-                output += " \(paperSymbol) "
-            case 3:
-                output += " \(scissorsSymbol) "
-            default:
-                output += "    "
-            }
+            output += " \(symbol(for: item[0])) "
         }
         output += "\n"
-        //output += "\n" + Array(repeating: "–", count: gridSize * 5).joined() + "\n"
     }
 
     print(output, terminator: "")
 }
 
-for i in 1...3 {
-    generatePositions(for: i, count: Int(CommandLine.arguments[2]) ?? 100)
+for i in 1...noOfTeams {
+    generatePositions(for: i, count: numberOfPieces)
 }
 
-for frame in 0..<(Int(CommandLine.arguments[3]) ?? 100) {
+for frame in 0..<noOfFrames {
     updatePositions()
     printGrid()
     print()
     print(frame)
 
-    var scissorCount = 0
-    var rockCount = 0
-    var paperCount = 0
+    var counts = Array(repeating: 0, count: noOfTeams)
     for row in grid {
         for item in row {
-            item == 3
-                ? scissorCount += 1
-                : item == 1 ? rockCount += 1 : item == 2 ? paperCount += 1 : ()
+            if item[0] != 0 {
+                counts[item[0] - 1] += 1
+            }
         }
     }
-    let total = rockCount + paperCount + scissorCount
-    print(rockSymbol, rockCount, separator: ": ")
-    print(paperSymbol, paperCount, separator: ": ")
-    print(scissorsSymbol, scissorCount, separator: ": ")
+
+    for (index, count) in counts.enumerated() {
+        if count != 0 {
+            print(symbol(for: index + 1), count, separator: ": ")
+        }
+    }
+
+    let total = counts.reduce(0, +)
     print("Σ - \(total)")
-    if rockCount == total || paperCount == total || scissorCount == total {
+    if counts.contains(where: { $0 == total }) {
         break
     }
-    try await Task.sleep(nanoseconds: 100_000_000)
+    try await Task.sleep(nanoseconds: 50_000_000)
 }
 
 let end = CFAbsoluteTimeGetCurrent()
