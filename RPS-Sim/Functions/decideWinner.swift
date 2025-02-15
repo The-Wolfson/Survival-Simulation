@@ -7,13 +7,13 @@
 
 import Foundation
 
-func decideWinner(num1: Int, num2: Int, totalMoves: Int = noOfTeams) -> Int {
+func decideWinner(num1: Int, num2: Int) -> Int {
     if num1 == num2 {
         return num1
     }
 
-    let half = totalMoves / 2
-    let diff = ((num1 - 1) - (num2 - 1) + totalMoves) % totalMoves
+    let half = noOfTeams / 2
+    let diff = ((num1 - 1) - (num2 - 1) + noOfTeams) % noOfTeams
 
     if diff >= 1 && diff <= half {
         return num1
