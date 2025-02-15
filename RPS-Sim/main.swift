@@ -27,7 +27,7 @@ for i in 1...noOfTeams {
     generatePositions(for: i, count: numberOfPieces)
 }
 
-for frame in 0..<noOfFrames {
+for frame in 1...noOfFrames {
     updatePositions()
     printGrid()
     print()
