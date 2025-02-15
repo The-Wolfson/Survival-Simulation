@@ -31,9 +31,11 @@ output:
 ```
 
 ## Usage
+1. Download the Unix Executable File from the releases page
+2. Open terminal and navigate to the directory using `cd /path/to/dir/`
+3. Run the Executable using `./RPS-Sim <gridSize> <noOfPieces> <noOfFrames> <noOfTeams>`
 
-When running the program you need to provide the following arguments, in this order:
-
+<b>Note:</b> When running the program you need to provide the following arguments, in this order:
 - `<gridSize>`: Int - The size of the grid for the simulation.
 - `<numberOfPieces>`: Int - The number of objects per team.
 - `<noOfFrames>`: Int - The number of frames to be simulated.
