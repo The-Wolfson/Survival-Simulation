@@ -49,7 +49,7 @@ for frame in 0..<noOfFrames {
     }
 
     let total = counts.reduce(0, +)
-    print("Σ - \(total)")
+    print(total != noOfTeams * numberOfPieces ? "\u{001B}[31m" : "\u{001B}[32m" ,"Σ: \(total)", "\u{001B}[0m")
     if counts.contains(where: { $0 == total }) {
         break
     }
