@@ -40,7 +40,7 @@ func updatePositions() {
                     }
 
                     if newRow >= 0 && newRow < gridSize && newCol >= 0
-                        && newCol < gridSize && oldDirection != direction
+                        && newCol < grid[0].count && oldDirection != direction
                     {
 
                         if grid[newRow][newCol][0] == 0 {

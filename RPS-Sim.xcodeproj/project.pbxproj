@@ -19,10 +19,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8381C52A2D6144FB0073268C /* Survival-Simulation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Survival-Simulation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83C781662D5F045A00981265 /* RPS-Sim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "RPS-Sim"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8381C52B2D6144FB0073268C /* Survival-Simulation */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Survival-Simulation";
+			sourceTree = "<group>";
+		};
 		83C781682D5F045A00981265 /* RPS-Sim */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "RPS-Sim";
@@ -31,6 +37,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8381C5272D6144FB0073268C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83C781632D5F045A00981265 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				83C781682D5F045A00981265 /* RPS-Sim */,
+				8381C52B2D6144FB0073268C /* Survival-Simulation */,
 				83C781672D5F045A00981265 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				83C781662D5F045A00981265 /* RPS-Sim */,
+				8381C52A2D6144FB0073268C /* Survival-Simulation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +75,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8381C5292D6144FB0073268C /* Survival-Simulation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8381C5382D6144FD0073268C /* Build configuration list for PBXNativeTarget "Survival-Simulation" */;
+			buildPhases = (
+				8381C5262D6144FB0073268C /* Sources */,
+				8381C5272D6144FB0073268C /* Frameworks */,
+				8381C5282D6144FB0073268C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8381C52B2D6144FB0073268C /* Survival-Simulation */,
+			);
+			name = "Survival-Simulation";
+			packageProductDependencies = (
+			);
+			productName = "Survival-Simulation";
+			productReference = 8381C52A2D6144FB0073268C /* Survival-Simulation.app */;
+			productType = "com.apple.product-type.application";
+		};
 		83C781652D5F045A00981265 /* RPS-Sim */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83C7816D2D5F045A00981265 /* Build configuration list for PBXNativeTarget "RPS-Sim" */;
@@ -92,6 +129,9 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					8381C5292D6144FB0073268C = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					83C781652D5F045A00981265 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -112,11 +152,29 @@
 			projectRoot = "";
 			targets = (
 				83C781652D5F045A00981265 /* RPS-Sim */,
+				8381C5292D6144FB0073268C /* Survival-Simulation */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		8381C5282D6144FB0073268C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		8381C5262D6144FB0073268C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83C781622D5F045A00981265 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +185,60 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		8381C5362D6144FD0073268C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Survival-Simulation/Survival_Simulation.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Survival-Simulation/Preview Content\"";
+				DEVELOPMENT_TEAM = VNQ8BQ6826;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "B-WStudios.Survival-Simulation";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8381C5372D6144FD0073268C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Survival-Simulation/Survival_Simulation.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Survival-Simulation/Preview Content\"";
+				DEVELOPMENT_TEAM = VNQ8BQ6826;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "B-WStudios.Survival-Simulation";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		83C7816B2D5F045A00981265 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -270,6 +382,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8381C5382D6144FD0073268C /* Build configuration list for PBXNativeTarget "Survival-Simulation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8381C5362D6144FD0073268C /* Debug */,
+				8381C5372D6144FD0073268C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		83C781612D5F045A00981265 /* Build configuration list for PBXProject "RPS-Sim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
