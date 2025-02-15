@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'RPS-Sim' in project 'RPS-Sim' (no dependencies)

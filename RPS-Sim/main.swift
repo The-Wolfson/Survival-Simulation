@@ -19,7 +19,7 @@ guard CommandLine.arguments.count != 4 else {
 let gridSize: Int = Int(CommandLine.arguments[1]) ?? 40
 let numberOfPieces: Int = Int(CommandLine.arguments[2]) ?? 100
 let noOfFrames: Int = Int(CommandLine.arguments[3]) ?? 100
-let noOfTeams: Int = min(Int(CommandLine.arguments[4]) ?? 3, 9)
+let noOfTeams: Int = min((Int(CommandLine.arguments[4]) ?? 3), 9) | 1
 var grid: [[[Int]]] = Array(
     repeating: Array(repeating: [0, 0], count: gridSize), count: gridSize)
 

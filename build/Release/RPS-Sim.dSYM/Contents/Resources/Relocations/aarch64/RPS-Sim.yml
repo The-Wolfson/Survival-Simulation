@@ -1,5 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/joshuawolfson/Documents/Coding/RPS-Sim/build/Release/RPS-Sim'
-relocations:     []
-...
