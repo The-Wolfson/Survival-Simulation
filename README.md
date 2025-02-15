@@ -32,10 +32,8 @@ output:
 
 ## Usage
 
-To run the simulation, use the following command:
-```sh
-swift run <gridSize> <numberOfPieces> <noOfFrames> <noOfTeams>
-```
+When running the program you need to provide the following arguments, in this order:
+
 - `<gridSize>`: Int - The size of the grid for the simulation.
 - `<numberOfPieces>`: Int - The number of objects per team.
 - `<noOfFrames>`: Int - The number of frames to be simulated.
