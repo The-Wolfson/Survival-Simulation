@@ -8,22 +8,27 @@ This project simulates the mechanics of rock, paper, scissors (with some added f
 
 Inspired by [@livingrps (Peter Ganunis)](https://www.tiktok.com/@livingrps)
 
-## Installation
+output:
+```
+             🟧                  🟥     
+ 🟧          🟨                         
+     🟦                      🟨         
+         🟦          🟩                 
+ 🟥  🟩              🟥              🟩 
+             🟩      🟦  🟦             
+                                     🟨 
+         🟦      🟨  🟨                 
+     🟥  🟧                  🟦         
+ 🟧          🟥                      🟧 
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/The-Wolfson/Survival-Simulation.git
-   ```
-
-2. **Navigate to the project directory:**
-   ```sh
-   cd Survival-Simulation
-   ```
-
-3. **Build the project:**
-   ```sh
-   swift build
-   ```
+155
+🟥: 5
+🟧: 5
+🟨: 5
+🟩: 4
+🟦: 6
+ Σ: 25 
+```
 
 ## Usage
 
