@@ -7,17 +7,7 @@
 
 import Foundation
 
-/**
- Updates the positions of items within the grid based on random directions.
-
- - Note:
-    - The function iterates through each item in the grid.
-    - If the item is not zero, it attempts to move the item in a random direction (up, right, down, or left).
-    - The item is only moved if the new position is within the grid boundaries and does not match the old direction.
-    - If the new position is empty, the item is moved to the new position.
-    - If the new position is occupied, the `decideWinner` function determines which item remains in the new position based on their values.
- */
-func updatePositions() {
+func updatePositions(_ grid: inout [[[Int]]], noOfTeams: Int) {
     for (rowIndex, row) in grid.enumerated() {
         for (colIndex, item) in row.enumerated() {
             let number = item[0]
@@ -39,7 +29,7 @@ func updatePositions() {
                     default: break
                     }
 
-                    if newRow >= 0 && newRow < gridSize && newCol >= 0
+                    if newRow >= 0 && newRow < grid.count && newCol >= 0
                         && newCol < grid[0].count && oldDirection != direction
                     {
 
@@ -53,7 +43,7 @@ func updatePositions() {
                         } else {
                             let winner = decideWinner(
                                 num1: grid[rowIndex][colIndex][0],
-                                num2: grid[newRow][newCol][0])
+                                num2: grid[newRow][newCol][0], noOfTeams: noOfTeams)
                             grid[newRow][newCol] = [
                                 winner,
                                 direction > 2 ? direction - 2 : direction + 2,

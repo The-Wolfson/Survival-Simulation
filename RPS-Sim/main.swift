@@ -21,8 +21,7 @@ let numberOfPieces: Int = (CommandLine.arguments.count > 2) ? Int(CommandLine.ar
 let noOfFrames: Int = (CommandLine.arguments.count > 3) ? Int(CommandLine.arguments[3]) ?? 100 : 100
 let noOfTeams: Int = (CommandLine.arguments.count > 4) ? min((Int(CommandLine.arguments[4]) ?? 3), 9) : 3
 var grid: [[[Int]]] = Array(
-    repeating: Array(repeating: [0, 0], count: gridSize), count: gridSize)
-
+    repeating: Array(repeating: [0, 0], count: Int((9.0 / 16.0) * Double(gridSize))), count: gridSize)
 for i in 1...noOfTeams {
     generatePositions(for: i, count: numberOfPieces)
 }
@@ -30,6 +29,9 @@ for i in 1...noOfTeams {
 for frame in 1...noOfFrames {
     updatePositions()
     printGrid()
+    autoreleasepool {
+        saveImage(image: createTextImage(), to: URL(fileURLWithPath: "/Users/joshuawolfson/Desktop/Sim/\(frame).png"))
+    }
     print()
     print(frame)
 
@@ -53,7 +55,7 @@ for frame in 1...noOfFrames {
     if counts.contains(where: { $0 == total }) {
         break
     }
-    try await Task.sleep(nanoseconds: 50_000_000)
+    //try await Task.sleep(nanoseconds: 100_000_000)
 }
 
 let end = CFAbsoluteTimeGetCurrent()

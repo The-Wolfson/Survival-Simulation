@@ -23,9 +23,22 @@
 		83C781662D5F045A00981265 /* RPS-Sim */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "RPS-Sim"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8381C5662D6188FA0073268C /* Exceptions for "Survival-Simulation" folder in "Survival-Simulation" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8381C5292D6144FB0073268C /* Survival-Simulation */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8381C52B2D6144FB0073268C /* Survival-Simulation */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8381C5662D6188FA0073268C /* Exceptions for "Survival-Simulation" folder in "Survival-Simulation" target */,
+			);
 			path = "Survival-Simulation";
 			sourceTree = "<group>";
 		};
@@ -199,6 +212,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Survival-Simulation/Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -226,6 +240,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Survival-Simulation/Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

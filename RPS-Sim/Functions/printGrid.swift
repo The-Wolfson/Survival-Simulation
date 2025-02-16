@@ -27,3 +27,34 @@ func printGrid() {
 
     print(output, terminator: "")
 }
+
+import Cocoa
+
+func createTextImage() -> NSImage {
+    let font = NSFont.systemFont(ofSize: 50)
+    let text = grid.map { row in
+        row.map { "\(symbol(for: $0[0]))" }.joined(separator: " ")
+    }.joined(separator: "\n")
+
+    let image = NSImage(size: NSSize(width: 704, height: 1920), flipped: false) { (rect) -> Bool in
+        text.draw(in: rect, withAttributes: [.font: font])
+        return true
+    }
+    
+    return image
+}
+
+func saveImage(image: NSImage, to url: URL) {
+    // Create an image representation to save as PNG
+    if let imageData = image.tiffRepresentation,
+       let bitmap = NSBitmapImageRep(data: imageData) {
+        let pngData = bitmap.representation(using: .png, properties: [:])
+        
+        do {
+            try pngData?.write(to: url)
+            print("Image saved successfully to \(url.path)")
+        } catch {
+            print("Failed to save image: \(error)")
+        }
+    }
+}
